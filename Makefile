@@ -1,5 +1,6 @@
 export TARGET=flutter
 #export TARGET=python37
+export USER_NAME=`whoami`
 
 # basic-Command
 export PWD=`pwd`
@@ -50,11 +51,56 @@ clean:
 	@docker images
 	@docker ps -a
 # --------------------------------------------------------
+# origin environment creation
+.PHONY: install-nvidia-driver
+install-nvidia-driver: ## install nvidia-driver
+	@sudo apt -y install nvidia-driver-418
+	@echo "please reboot yourself"
+.PHONY: install-docker
+
+define def_install_docker
+	echo "[install docker]"
+	sudo apt-get update && apt-get install -y \
+		apt-transport-https \
+		ca-certificates \
+		curl \
+		gnupg-agent \
+		software-properties-common
+	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+	sudo apt-key fingerprint 0EBFCD88
+	sudo add-apt-repository \
+		"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+		$(lsb_release -cs) \
+		stable"
+	sudo apt-get update && apt-get install -y \
+		docker-ce\
+		docker-ce-cli\
+		containerd.io
+endef
+
+define def_install_nvidia_docker
+	echo "[install nvidia docker]"
+	distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+	curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
+	curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+	sudo apt-get update && sudo apt-get install -y nvidia-container-toolkit
+	sudo systemctl restart docker
+endef
+
+.PHONY: install-docker
+install-docker: ## install docker
+	@$(def_install_docker)
+	@cat /etc/group | grep docker
+	@sudo usermod -aG docker $(USER_NAME)
+	@docker -v
+	@docker run hello-world
+	@$(def_install_nvidia-docker)
+	@echo "finished."
+# --------------------------------------------------------
 .PHONY:	jn
 jn:	## Launch jupyter notebook
 	jupyter notebook --port 8888 --ip="0.0.0.0" --allow-root
 
-# --------------------------------------------------------
 # help
 .PHONY:	help
 help:	## this help
