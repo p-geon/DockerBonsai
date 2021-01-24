@@ -3,11 +3,11 @@ LABEL maintainer "p-geon"
 LABEL version="0.1"
 LABEL purpose="python3.7-base"
 
-ENV DIR_DOCKER=python37
+ENV DIR_DOCKER=python37env
 ENV DEBCONF_NOWARNINGS yes
 ENV WORKDIR=/work
 
-COPY python37/requirements.txt ./
+COPY ${DIR_DOCKER}/requirements.txt ./
 
 RUN apt-get update && apt-get install -y --quiet --no-install-recommends \
   vim \

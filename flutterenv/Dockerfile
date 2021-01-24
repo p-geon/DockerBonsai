@@ -2,7 +2,7 @@
 FROM ubuntu:18.04
 LABEL maintainer "p-geon"
 LABEL version="0.1"
-LABEL purpose="flutter-base"
+LABEL purpose="flutter-env"
 
 RUN apt-get update && apt-get install -y --quiet --no-install-recommends \
   vim \

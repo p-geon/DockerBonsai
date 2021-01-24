@@ -1,5 +1,5 @@
-export TARGET=flutter
-#export TARGET=python37
+export TARGET=flutterenv
+#export TARGET=python37env
 export USER_NAME=`whoami`
 
 # basic-Command
