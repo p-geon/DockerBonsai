@@ -1,0 +1,3 @@
+# Geeral Purpose
+tqdm==4.54.0
+easydict==1.9
