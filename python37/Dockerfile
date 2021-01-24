@@ -17,4 +17,4 @@ RUN pip install -r requirements.txt -q
 
 WORKDIR ${WORKDIR}
 #ENTRYPOINT ["/bin/bash"]
-ENTRYPOINT ["python3", "python37/hello_world.py"]
+ENTRYPOINT ["python3", "hello_world.py"]
