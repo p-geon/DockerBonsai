@@ -1,0 +1,30 @@
+<!--https://qiita.com/yamazaki3104/items/c793d77a19f104c2a63e-->
+<html>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.22/vue.min.js'></script><!-- 2019-01-25 https://cdnjs.com/libraries/vue -->
+<body>
+
+<div id="vue_example"></div>
+
+<script>
+var vue_example = new Vue({
+  el: '#vue_example',
+
+  template: `<div>
+    <p>{{ message }}</p>
+    <input v-model="message" />
+    <button v-on:click="reverse()">Reverse</button>
+    </div>`,
+
+  data: {
+    message: 'Hello Vue.js!',
+  },
+
+  methods: {
+    reverse: function () {
+      this.message = this.message.split('').reverse().join('')
+    },
+  },
+})
+</script>
+</body>
+</html>

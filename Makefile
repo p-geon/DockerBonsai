@@ -1,4 +1,5 @@
-export TARGET=flutterenv
+export TARGET=vuejsenv
+#export TARGET=flutterenv
 #export TARGET=python37env
 export USER_NAME=`whoami`
 
