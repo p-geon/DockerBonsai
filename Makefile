@@ -1,6 +1,7 @@
-export TARGET=vuejsenv
+#export TARGET=vuejsenv
 #export TARGET=flutterenv
-#export TARGET=python37env
+export TARGET=python37env
+export TARGET=tf-2.3-cpuenv
 export USER_NAME=`whoami`
 
 # basic-Command
