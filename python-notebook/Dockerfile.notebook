@@ -1,0 +1,20 @@
+FROM python:3.7
+LABEL version="0.1"
+LABEL purpose="python3.7-jupyter_notebook"
+
+ENV DIR_DOCKER=docker
+ENV DEBCONF_NOWARNINGS yes
+
+RUN apt-get update && apt-get install -y --quiet --no-install-recommends \
+  wget
+
+RUN pip install -q --upgrade pip
+
+COPY ./requirements.txt ./
+RUN pip install -r requirements.txt -q
+RUN pip install -q jupyter==1.0.0
+
+WORKDIR /work
+EXPOSE 8888
+#ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["jupyter", "notebook", "--port", "8888", "--ip=0.0.0.0", "--allow-root"]

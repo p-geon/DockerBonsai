@@ -1,0 +1,5 @@
+# General Purpose
+tqdm==4.54.0
+numpy==1.19.5
+matplotlib==3.3.3
+scikit-image==0.17.2
