@@ -7,7 +7,8 @@ torch==1.7.1
 torchvision==0.8.2
 torchtext==0.8.1
 torchaudio==0.7.2
-tensorboardx==2.1
+#tensorboardx==2.1
+tensorboard==2.4.1
 transformers==4.3.2
 #torchrl==1.8.4
 pytorch-lightning==1.1.8
