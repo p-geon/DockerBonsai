@@ -1,10 +1,11 @@
+export ID_DOCKERHUB=hyperpigeon
 export NAME_CONTAINER=flutter_base
 export PWD=`pwd`
 # ====================
 b: ## build notebook & lab 
-	docker build -f Dockerfile -t $(NAME_CONTAINER) .
+	docker build -f Dockerfile -t $(ID_DOCKERHUB)/$(NAME_CONTAINER) .
 r: ## run jupyter notebook
-	docker run -it --rm -v $(PWD):/work/ $(NAME_CONTAINER)
+	docker run -it --rm -v $(PWD):/work/ $(ID_DOCKERHUB)/$(NAME_CONTAINER)
 # ====================
 # docker commands
 export NONE_DOCKER_IMAGES=`docker images -f dangling=true -q`
