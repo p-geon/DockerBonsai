@@ -1,2 +1,4 @@
 weight/*
 !weight/.gitkeep
+
+*.tar.gz
