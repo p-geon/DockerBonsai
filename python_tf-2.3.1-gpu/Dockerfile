@@ -1,6 +1,6 @@
 # tf2.3+py3.69
 #FROM tensorflow/tensorflow:latest-gpu
-FROM tensorflow/tensorflow:2.3.1
+FROM tensorflow/tensorflow:2.3.1-gpu
 LABEL maintainer "p-geon"
 LABEL version="0.3.0"
 LABEL purpose="GeneralPurpose"

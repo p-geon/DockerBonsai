@@ -15,10 +15,11 @@ make br
 ## Environments
 
 - C++ base
+- C++ + TensorFlow-2.3.1-GPU
 - Python 3.7
-- Python 3.7 + TensorFlow-CPU
-- Python 3.7 + TensorFlow-GPU
-- Python 3.7 + PyTorch
+- Python 3.7 + TensorFlow-2.3.1-CPU
+- Python 3.7 + TensorFlow-2.3.1-GPU
+- Python 3.7 + PyTorch-1.7.1
 - jupyter notebook/lab
 - ubuntu-base
 - (WIP) Flutter-base
