@@ -11,5 +11,5 @@ COPY ./requirements.txt ./
 RUN pip install -r requirements.txt -q
 
 WORKDIR /work
-ENTRYPOINT ["/bin/bash"]
-#ENTRYPOINT ["python", "scripts/train.py"]
+#ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["python", "scripts/train.py"]

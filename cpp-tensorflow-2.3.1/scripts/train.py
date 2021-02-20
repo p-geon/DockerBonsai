@@ -1,5 +1,6 @@
 import numpy as np
 import tensorflow as tf
+from skimage import io
 
 print(tf.version.VERSION)
 
@@ -9,6 +10,9 @@ def conv2d(x, ch):
         , use_bias=True, bias_initializer='zeros'
         )(x)
     return x
+
+def save_sample(img):
+    io.imsave("sample.bmp", img)
 
 class Trainer:
     def __init__(self):
@@ -39,6 +43,8 @@ def main():
     X_train = X_train.astype(np.float32).reshape(-1, 28, 28, 1) / 255.0
     X_test = X_test.astype(np.float32).reshape(-1, 28, 28, 1) / 255.0
 
+    save_sample(img=X_train[0, :, :, 0])
+
     trainer = Trainer()
     trainer.train(X_train, y_train, X_test, y_test)
 
@@ -46,6 +52,7 @@ def main():
     print(val_loss, val_acc)
 
     trainer.model.save('weight')
+
 
 if(__name__=="__main__"):
     main()

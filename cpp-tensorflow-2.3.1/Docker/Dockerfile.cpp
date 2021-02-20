@@ -23,6 +23,6 @@ RUN rm ./libtensorflow-gpu-linux-x86_64-${version_tf}.tar.gz
 ENV LIBRARY_PATH=$LIBRARY_PATH:/usr/local/:/usr/local/cuda-10.1/targets/x86_64-linux/lib/
 ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/:/usr/local/cuda-10.1/targets/x86_64-linux/lib/
 
-#ENTRYPOINT ["/bin/bash"]
-COPY ./entrypoint.sh ./
-ENTRYPOINT ["sh", "./entrypoint.sh"]
+ENTRYPOINT ["/bin/bash"]
+#COPY ./entrypoint.sh ./
+#ENTRYPOINT ["sh", "./entrypoint.sh"]

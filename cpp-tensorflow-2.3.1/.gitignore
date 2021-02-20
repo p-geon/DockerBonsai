@@ -5,3 +5,5 @@ built/*
 !built/.gitkeep
 
 *.tar.gz
+*.pb
+sample.bmp
