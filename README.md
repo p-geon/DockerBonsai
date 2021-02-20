@@ -2,7 +2,17 @@
 
 <img src="TheFreeImageofBonsai.jpg"></img>
 
-## ENV
+The Bonsai is by [Davin H](https://unsplash.com/@devin_photography) from unsplash.
+
+## Usage
+
+`cd {dir}` then, run make command.
+
+```
+make br
+```
+
+## Environments
 
 - C++ base
 - Python 3.7
@@ -14,7 +24,7 @@
 - (WIP) Flutter-base
 - (WIP) Vue-js base
 
-## TODO
+## TODO-list
 
 - DeepLearning AMI-modoki (with various CUDA)
 - flutter: (WIP)
@@ -28,11 +38,3 @@
 - ShaderLang: Cg, HLSL or GLSL (ShaderLab)
 - Docker Compose
 - Docker installer (check with any env)
-
-## Usage
-
-`cd {dir}` then, run make command.
-
-```
-make br
-```
