@@ -1,27 +1,37 @@
-FROM tensorflow/tensorflow
+# tf2.3+py3.69
+#FROM tensorflow/tensorflow:latest-gpu
+FROM tensorflow/tensorflow:2.3.1
 LABEL maintainer "p-geon"
-LABEL version="0.1"
-LABEL purpose="TensorFlow-CPU-base"
+LABEL version="0.3.0"
+LABEL purpose="GeneralPurpose"
 
-ENV DIR_DOCKER=tf-2.3-cpuenv
+## ==Hide Warnings==
 ENV DEBCONF_NOWARNINGS yes
 ENV DEBIAN_FRONTEND=noninteractive
-ENV WORKDIR=/work
 
-COPY ${DIR_DOCKER}/requirements.txt ./
-
+## ==apt==
+# alphabet-based sorting
+# set timezone
 ENV TZ="Asia/Tokyo"
 RUN apt-get update && apt-get install -y tzdata
 RUN apt-get install -y --quiet --no-install-recommends \
+  graphviz \
   vim \
   wget
 
+# == python modules==
 RUN pip install -q --upgrade pip
+COPY requirements.txt ./
 RUN pip install -r requirements.txt -q
+
 RUN pip install -q -U\
 	tf-hub-nightly==0.10.0.dev202012010006\
 	tensorflow-addons==0.11.2
 
-WORKDIR ${WORKDIR}
-#ENTRYPOINT ["/bin/bash"]
-ENTRYPOINT ["python3", "hello_world.py"]
+# ==Add user==
+USER root
+
+# ==finish building==
+EXPOSE 8888
+WORKDIR /work
+ENTRYPOINT ["/bin/bash"]
