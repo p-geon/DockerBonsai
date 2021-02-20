@@ -1,2 +1,7 @@
-pyyaml
-h5py
+# Numerical & DS
+#numpy==1.19.5
+scikit-image==0.17.2
+
+# General Purpose
+PyYAML==5.4.1
+h5py==2.10.0

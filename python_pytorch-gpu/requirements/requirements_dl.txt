@@ -2,7 +2,6 @@
 scikit-learn==0.23.2
 
 ## PyTorch Series
-
 torch==1.7.1
 torchvision==0.8.2
 torchtext==0.8.1

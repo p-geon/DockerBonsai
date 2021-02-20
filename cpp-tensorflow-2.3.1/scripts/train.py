@@ -45,5 +45,7 @@ def main():
     val_loss, val_acc = trainer.model.evaluate(X_test, y_test, batch_size=50)
     print(val_loss, val_acc)
 
+    trainer.model.save('weight')
+
 if(__name__=="__main__"):
     main()
