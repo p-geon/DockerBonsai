@@ -1,43 +1,5 @@
-#export TARGET=vuejsenv
-#export TARGET=flutterenv
-export TARGET=python37env
-export TARGET=tf-2.3-cpuenv
-export USER_NAME=`whoami`
-
 # basic-Command
 export PWD=`pwd`
-export DOCKER_BUILD=docker build
-export DOCKER_RUN=docker run
-
-# Experiment
-export CONTAINER_NAME=$(TARGET)
-export DIR_DOCKER=$(TARGET)
-export DOCKERFILE_NAME=Dockerfile
-#export EXPOSED_PORT=8888
-
-# --------------------------------------------------------
-# build / run
-
-.PHONY:	b
-b:	## Build docker.
-	$(DOCKER_BUILD) -f $(DIR_DOCKER)/$(DOCKERFILE_NAME) -t $(CONTAINER_NAME) .
-.PHONY:	r
-r:	## Run docker. without GPUs
-	$(DOCKER_RUN) -it --rm \
-	-v $(PWD)/$(TARGET):/work/ \
-	$(CONTAINER_NAME)
-# docker support 
-.PHONY: w # build & run (simultaneously)
-br:
-	@make b
-	@make r
-.PHONY: c
-c: ## re-Connect suspended container
-	docker exec -i -t $(CONTAINER_ID) /bin/bash
-	
-.PHONY:	build
-build:	## Build docker without cache.
-	$(DOCKER_BUILD) -f $(DIR_DOCKER)/$(DOCKERFILE_NAME) -t $(CONTAINER_NAME) . --no-cache
 # --------------------------------------------------------
 # Clear all docker images and docker processes
 export DOCKER_DELETE_IMAGES=docker rmi
