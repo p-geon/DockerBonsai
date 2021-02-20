@@ -3,7 +3,8 @@
 export PWD=`pwd`
 # --------------------------------------------------------
 # docker
-export CONTAINER_NAME=container_name
+export DIR_CONTAINER=`pwd | sed 's,^\(.*/\)\?\([^/]*\),\2,'`
+export NAME_CONTAINER=hyperpigeon/$(DIR_CONTAINER)
 export DIR_DOCKER=.
 export DOCKERFILE_NAME=Dockerfile
 export EXPOSED_PORT=8888
@@ -11,12 +12,12 @@ br: ## build & run
 	@make b
 	@make r
 b: ## build docker.
-	docker build -f $(DIR_DOCKER)/$(DOCKERFILE_NAME) -t $(CONTAINER_NAME) .
+	docker build -f $(DIR_DOCKER)/$(DOCKERFILE_NAME) -t $(NAME_CONTAINER) .
 r: ## run docker.
 	docker run -it --rm --gpus all \
 	-p $(EXPOSED_PORT):$(EXPOSED_PORT) \
 	-v $(PWD):/work \
-	$(CONTAINER_NAME)
+	$(NAME_CONTAINER)
 c: ## connect newest container
 	docker exec -i -t $(CONTAINER_ID) /bin/bash
 # --------------------------------------------------------
