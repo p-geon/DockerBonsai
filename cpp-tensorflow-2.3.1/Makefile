@@ -1,27 +1,28 @@
 export DIR_CONTAINER=`pwd | sed 's,^\(.*/\)\?\([^/]*\),\2,'`
 export NAME_CONTAINER=hyperpigeon/$(DIR_CONTAINER)
 # ========================================
-br: ## build & run
-	@make b
-	@make r
 b: ## build Docker
 	-@make build-cpp
 	-@make build-py
-r: ## run Docker
-	make cpp
+py: ## build & run python
+	@make build-py
+	@make run-py
+cpp: ## build & run c++
+	@make build-cpp
+	@make run-cpp
 -: ## ========================================
-build-cpp: ## build c++ only
-	#docker build -f Docker/Dockerfile.cpp -t $(NAME_CONTAINER)_cpp .
-	docker build -f Docker/Dockerfile.cv -t $(NAME_CONTAINER)_cpp .
 build-py: ## build python only
 	docker build -f Docker/Dockerfile.py  -t $(NAME_CONTAINER)_py .
+build-cpp: ## build c++ only
+	#docker build -f Docker/Dockerfile.cpp -t $(NAME_CONTAINER)_cpp .
+	docker build -f Docker/Dockerfile.cpp -t $(NAME_CONTAINER)_cpp .
 -: ## ========================================
-py: ## run python(train)
+run-py: ## run python(train)
 	docker run -it --rm \
 	--gpus all \
 	-v $(PWD):/work/ \
 	$(NAME_CONTAINER)_py
-cpp: ## run c++
+run-cpp: ## run c++
 	docker run -it --rm \
 	--gpus all \
 	-v $(PWD):/work/ \
