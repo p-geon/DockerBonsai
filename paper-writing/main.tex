@@ -1,0 +1,59 @@
+\documentclass[10pt,twocolumn,letterpaper]{article}
+
+\usepackage{modules/iccv}
+\usepackage{times}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{comment}
+
+% Include other packages here, before hyperref.
+
+\usepackage[breaklinks=true,bookmarks=false,dvipdfmx]{hyperref}
+
+\iccvfinalcopy
+
+\def\iccvPaperID{****} % *** Enter the ICCV Paper ID here
+\def\httilde{\mbox{\tt\raisebox{-.5ex}{\symbol{126}}}}
+
+% Pages are numbered in submission mode, and unnumbered in camera-ready
+\ificcvfinal\pagestyle{empty}\fi
+
+\begin{document}
+
+\title{Title of This Article.}
+
+\author{
+p-geon\\
+Hyper Pigeon
+}
+
+\maketitle
+\ificcvfinal\thispagestyle{empty}\fi
+
+%%%%%%%%% ABSTRACT
+%\input{contents/0_Abstract.tex}
+
+%%%%%%%%% BODY TEXT
+\section{Introduction}
+
+This is a test for compling LaTex. ~\cite{bibtest}
+
+\section{Formula}
+
+\[
+    \min _{G} \max _{D} V(D, G)=\mathbb{E}_{\boldsymbol{x} \sim p_{\text {data }}(\boldsymbol{x})}[\log D(\boldsymbol{x})]+\mathbb{E}_{\boldsymbol{z} \sim p_{\boldsymbol{z}}(\boldsymbol{z})}[\log (1-D(G(\boldsymbol{z})))]
+\]
+
+\input{contents/1.tex}
+
+\section{References}
+
+{\small
+%\bibliographystyle{modules/ieee_fullname} 
+\bibliographystyle{unsrt}
+\bibliography{references}
+}
+
+\end{document}
