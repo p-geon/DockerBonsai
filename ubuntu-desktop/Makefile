@@ -1,3 +1,7 @@
+export PWD=`pwd`
+export HOME=/home/nagano
+export DISP=`echo $(DISPLAY)`
+
 disp:
 	echo $(DISP)
 b: # build xeyes (testing DISPLAY)
