@@ -1,0 +1,7 @@
+FROM ubuntu:18.04
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ="Asia/Tokyo"
+RUN apt-get update && apt-get install -y tzdata
+
+RUN apt-get install -y ubuntu-desktop
+ENTRYPOINT ["/bin/bash"]

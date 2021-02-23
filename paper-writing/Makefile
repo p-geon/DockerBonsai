@@ -1,28 +1,36 @@
 export PWD=`pwd`
-export DIR_TEX=.
-export FILENAME_TEX=main
-
-c: ## compile LaTeX (aux作成 → bbl作成 → dvi作成1 → dvi作成2 → pdf作成)
-	@make tex
-	@make aux
-	@make tex
-	@make tex
-	@make dvi
+export DIR=.
+export FILENAME=main_jp
+# ===========================================
+en: ## compile LaTeX with English
+	@make tex CONTAINER=pman0214/alpine-texlive-ja-epspdf
+	@make aux CONTAINER=pman0214/alpine-texlive-ja-epspdf
+	@make tex CONTAINER=pman0214/alpine-texlive-ja-epspdf
+	@make tex CONTAINER=pman0214/alpine-texlive-ja-epspdf
+	@make dvi CONTAINER=pman0214/alpine-texlive-ja-epspdf
 	@make clean
-dvi:
-	docker run --rm -v $(PWD)/$(DIR_TEX):/workdir pman0214/alpine-texlive-ja-epspdf dvipdfmx $(FILENAME_TEX).dvi
-aux:
-	docker run --rm -v $(PWD)/$(DIR_TEX):/workdir pman0214/alpine-texlive-ja-epspdf upbibtex $(FILENAME_TEX).aux
+jp: ## compile LaTex with JP
+	@make tex CONTAINER=paperist/alpine-texlive-ja
+	@make aux CONTAINER=paperist/alpine-texlive-ja
+	@make tex CONTAINER=paperist/alpine-texlive-ja
+	@make tex CONTAINER=paperist/alpine-texlive-ja
+	@make dvi CONTAINER=paperist/alpine-texlive-ja
+	@make clean
 tex:
-	docker run --rm -v $(PWD)/$(DIR_TEX):/workdir pman0214/alpine-texlive-ja-epspdf uplatex $(FILENAME_TEX).tex
+	echo $(CONTAINER)
+	docker run --rm -v $(PWD)/$(DIR):/workdir $(CONTAINER) uplatex $(FILENAME).tex
+dvi:
+	docker run --rm -v $(PWD)/$(DIR):/workdir $(CONTAINER) dvipdfmx $(FILENAME).dvi
+aux:
+	docker run --rm -v $(PWD)/$(DIR):/workdir $(CONTAINER) upbibtex $(FILENAME).aux
 clean:
-	mv -f $(DIR_TEX)/$(FILENAME_TEX).blg \
-		$(DIR_TEX)/$(FILENAME_TEX).bbl \
-		$(DIR_TEX)/$(FILENAME_TEX).aux \
-		$(DIR_TEX)/$(FILENAME_TEX).log \
-		$(DIR_TEX)/$(FILENAME_TEX).dvi \
-		$(DIR_TEX)/progress_files/
-
+	mv -f $(DIR)/$(FILENAME).blg \
+		$(DIR)/$(FILENAME).bbl \
+		$(DIR)/$(FILENAME).aux \
+		$(DIR)/$(FILENAME).log \
+		$(DIR)/$(FILENAME).dvi \
+		$(DIR)/progress_files/
+# ===========================================
 show: ## Show LaTex commands.
 	cat latex_notation/dnn.txt
 
