@@ -18,4 +18,10 @@ echo $DISPLAY
 > /private/tmp/com.apple.launchd.cvRSAKQD3g/org.xquartz:0
 
 ssh chorusX
+cd {}
+make r
+nautilus
+xeyes
 ``` 
+
+# ---

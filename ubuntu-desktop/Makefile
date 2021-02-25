@@ -12,3 +12,14 @@ r: # run xeyes
 		-e DISPLAY=$(DISP) \
 		-v $(HOME)/.Xauthority:/root/.Xauthority \
 		xeyes
+# --------------------------------------------------------
+# docker commands
+export NONE_DOCKER_IMAGES=`docker images -f dangling=true -q`
+export STOPPED_DOCKER_CONTAINERS=`docker ps -a -q`
+clean: ## clean images/containers
+	-@make clean-images
+	-@make clean-containers
+clean-images:
+	docker rmi $(NONE_DOCKER_IMAGES) -f
+clean-containers:
+	docker rm -f $(STOPPED_DOCKER_CONTAINERS)
