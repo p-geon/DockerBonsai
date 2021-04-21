@@ -31,9 +31,3 @@ mlflow==1.12.1
 scikit-image==0.17.2
 opencv-python==4.4.0.46
 StealthFlow==0.0.13
-
-# Optimize
-wandb==0.10.12
-optuna==2.3.0
-hydra==2.5
-mlflow==1.12.1
