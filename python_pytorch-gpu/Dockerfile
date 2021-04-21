@@ -2,7 +2,6 @@ FROM pytorch/pytorch:1.7.1-cuda11.0-cudnn8-runtime
 LABEL purpose="pytorch-gpu-notebook"
 LABEL version="0.1"
 
-ENV DIR_DOCKER=.
 ENV DEBCONF_NOWARNINGS yes
 
 COPY ./requirements/requirements_gp.txt ./
