@@ -8,4 +8,4 @@ run:
 	docker run -it --rm --gpus all \
 		-v $(PWD):/work \
 		$(NAME_CONTAINER) \
-  python3 hello_world.py
+		python3 hello_world.py
